@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function FAQ() {
+function Faq() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [
@@ -41,7 +41,7 @@ function FAQ() {
         ))}
       </div>
     </section>
-  )
+  );
 }
 
-export default FAQ
+export default Faq;

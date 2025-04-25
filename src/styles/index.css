@@ -1,3 +1,4 @@
+/* src/styles/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,12 +15,13 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  background-attachment: fixed;
+  background: url('/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #ffffff;
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
-  overflow-y: auto; /* Ensure vertical scrolling */
+  overflow-y: auto;
 }
 
 .container {
@@ -27,7 +29,7 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
   z-index: 50;
-  overflow: visible; /* Allow content to overflow */
+  overflow: visible;
 }
 
 header {
@@ -38,15 +40,15 @@ header {
   z-index: 1000;
   border-bottom: 1px solid #DAA520;
   min-height: 70px;
-  width: 100%; /* Full page width */
-  max-width: none; /* Override container max-width */
+  width: 100%;
+  max-width: none;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* Keep header content constrained */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -88,8 +90,8 @@ nav {
   z-index: 500;
   border-bottom: 1px solid #DAA520;
   min-height: 50px;
-  width: 100%; /* Full page width */
-  max-width: none; /* Override container max-width */
+  width: 100%;
+  max-width: none;
 }
 
 nav ul {
@@ -100,7 +102,7 @@ nav ul {
   gap: 1rem;
   margin: 0;
   padding: 0;
-  max-width: 1200px; /* Keep nav links constrained */
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -121,21 +123,21 @@ nav a:hover {
   text-align: center;
   position: static;
   z-index: 50;
-  background: transparent; /* Ensure no white background */
-  overflow: visible; /* Allow content to overflow */
+  background: transparent;
+  overflow: visible;
 }
 
 /* Specific fix for Tokenomics section */
 #tokenomics ul,
 #tokenomics p {
-  display: block; /* Ensure visibility */
-  overflow: visible; /* Prevent clipping */
-  margin: 1rem 0; /* Add spacing for readability */
+  display: block;
+  overflow: visible;
+  margin: 1rem 0;
 }
 
 #tokenomics ul li {
-  display: block; /* Ensure list items are visible */
-  margin-bottom: 0.5rem; /* Add spacing between list items */
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
@@ -174,13 +176,13 @@ p {
 
 .hero-section {
   background: linear-gradient(180deg, rgba(106, 13, 173, 0.2), transparent);
-  padding: 1rem 2rem 4rem 2rem; /* Keep reduced top padding */
+  padding: 1rem 2rem 4rem 2rem;
 }
 
 .hero-content {
   max-width: 1200px;
   margin: 0 auto;
-  overflow: visible; /* Allow content to overflow */
+  overflow: visible;
 }
 
 .tagline {
@@ -214,7 +216,7 @@ p {
   width: 600px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7); /* Purple shadow for depth */
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
   transition: transform 0.3s ease;
   object-fit: contain;
   position: relative;
@@ -228,7 +230,7 @@ p {
 .video-group {
   display: flex;
   justify-content: center;
-  margin-top: 2rem; /* Add gap between content and video */
+  margin-top: 2rem;
 }
 
 .video-group video {
@@ -236,7 +238,7 @@ p {
   width: 600px;
   height: 337px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7); /* Purple shadow for depth */
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
   object-fit: cover;
   transition: transform 0.3s ease;
   z-index: 50;
@@ -250,9 +252,9 @@ p {
 .gameplay-images {
   display: flex;
   justify-content: center;
-  gap: 1rem; /* Small gap between photos */
+  gap: 1rem;
   margin-top: 2rem;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .gameplay-images picture {
@@ -265,7 +267,7 @@ p {
   width: 300px;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7); /* Purple shadow for depth */
+  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
   transition: transform 0.3s ease;
   object-fit: contain;
   position: relative;
@@ -328,7 +330,7 @@ p {
 }
 
 .team-section {
-  padding: 0.5rem 2rem; /* Match reduced section padding */
+  padding: 0.5rem 2rem;
   text-align: center;
 }
 
@@ -403,10 +405,10 @@ p {
   padding: 1rem;
 }
 
-/* Styles for PresaleWidget in Home component */
+/* Styles for PresaleWidget */
 .presale-widget {
   width: 320px;
-  z-index: 50; /* Ensure it's part of the document flow */
+  z-index: 50;
   border: 4px solid #DAA520 !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(218, 165, 32, 0.2), 0 0 12px #6A0DAD;
   background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
@@ -416,15 +418,15 @@ p {
   background-color: rgba(42, 42, 42, 0.95) !important;
 }
 
-.presale-widget p {
-  max-width: 80vw;
+.presale-widget-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.presale-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #DAA520;
-  margin-bottom: 1rem;
+.presale-widget p {
+  max-width: 80vw;
 }
 
 .presale-text {
@@ -517,7 +519,7 @@ p {
   color: #ffffff;
 }
 
-/* Center the RainbowKit modal with custom styling to match site */
+/* Center the RainbowKit modal */
 [data-rk] [role="dialog"] {
   position: fixed !important;
   top: 50% !important;
@@ -531,14 +533,13 @@ p {
   max-width: 480px !important;
   max-height: 80vh !important;
   width: 90vw !important;
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  overflow-y: auto;
   background: linear-gradient(145deg, #2a2a2a, #1a1a1a) !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(106, 13, 173, 0.7) !important;
   backdrop-filter: blur(5px) !important;
-  word-break: break-word; /* Ensure text wraps within the box */
+  word-break: break-word;
 }
 
-/* Style the modal header */
 [data-rk] [role="dialog"] h1 {
   color: #DAA520 !important;
   font-size: 1.5rem !important;
@@ -546,38 +547,43 @@ p {
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(106, 13, 173, 0.7) !important;
 }
 
-/* Ensure the modal overlay doesn't interfere */
 [data-rk] [data-reach-dialog-overlay] {
   z-index: 59999 !important;
   background: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(5px) !important;
 }
 
-/* Reset any styles that might interfere with the modal's internal layout */
 [data-rk] [role="dialog"] * {
   box-sizing: border-box !important;
 }
 
-/* Standardize and reduce the size of wallet icons */
+/* Standardize wallet icons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-  width: 28px !important;
-  height: 28px !important;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
   object-fit: contain !important;
+  border-radius: 4px !important;
+  background: #ffffff !important;
+  padding: 2px !important;
+  box-sizing: border-box !important;
 }
 
-/* Style wallet buttons to match site design */
+/* Style wallet buttons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
   display: flex !important;
   align-items: center !important;
   justify-content: flex-start !important;
   width: 100% !important;
-  padding: 0.5rem !important;
+  padding: 0.75rem !important;
   background: #2a2a2a !important;
   border: 1px solid #DAA520 !important;
   border-radius: 8px !important;
   transition: background-color 0.2s ease, transform 0.2s ease !important;
   color: #ffffff !important;
   font-weight: 500 !important;
+  gap: 0.75rem !important;
 }
 
 /* Hover effect for wallet buttons */
@@ -586,7 +592,7 @@ p {
   transform: scale(1.02) !important;
 }
 
-/* Style the modal's footer links */
+/* Style modal links */
 [data-rk] [role="dialog"] a {
   color: #DAA520 !important;
   text-decoration: none !important;
@@ -599,7 +605,7 @@ p {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .section {
-    padding: 0.5rem 1rem; /* Adjusted for mobile */
+    padding: 0.5rem 1rem;
   }
   h1 {
     font-size: 2rem;
@@ -644,8 +650,17 @@ p {
   .presale-widget {
     width: 280px;
   }
+  .presale-widget-wrapper {
+    justify-content: center;
+  }
   [data-rk] [role="dialog"] {
-    max-height: 70vh !important; /* Adjusted for mobile */
+    max-height: 70vh !important;
+  }
+  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
   }
 }
 
@@ -664,15 +679,20 @@ p {
   .presale-widget {
     width: 260px;
   }
+  .presale-widget-wrapper {
+    justify-content: center;
+  }
   [data-rk] [role="dialog"] {
-    max-height: 60vh !important; /* Adjusted for smaller screens */
+    max-height: 60vh !important;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
     width: 24px !important;
     height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-    width: auto !important;
-    height: auto !important;
+    padding: 0.5rem !important;
+    gap: 0.5rem !important;
   }
 }

@@ -1,3 +1,4 @@
+// src/components/PresaleWidget.jsx
 import { useState, useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useReadContract, useWriteContract, useBalance, useDisconnect } from 'wagmi';
@@ -5,7 +6,7 @@ import { parseEther, formatEther } from 'viem';
 import axios from 'axios';
 import { contractABI, contractAddress } from '../contracts/contractABI.js';
 
-function PresaleWidget() {
+function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title prop with default
   const [ethAmount, setEthAmount] = useState('0.001');
   const [mrcAmount, setMrcAmount] = useState(260);
   const [countdown, setCountdown] = useState('');
@@ -117,7 +118,7 @@ function PresaleWidget() {
 
   return (
     <div className="presale-widget">
-      <h2 className="presale-title">MRC Presale</h2>
+      <h2>{title}</h2> {/* Use h2 with customizable title */}
       {address && (
         <p className="presale-text">
           Your ETH Balance: {balanceError || !balance ? '0.00' : parseFloat(formatEther(balance.value)).toFixed(2)} ETH

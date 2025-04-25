@@ -10,18 +10,17 @@ function About() {
         <p>
           Our mission is to create a vibrant ecosystem where players can engage with meme-based NFTs, participate in thrilling battles, and earn rewards through our native MRC token. Learn more about our vision and how we’re revolutionizing the gaming world.
         </p>
-        <div className="video-group">
-          <video
-            controls
-            playsInline
-            poster="/images/Doge-vs-warrior-final.webp"
-            onClick={() => console.log('Video clicked')}
-            onError={(e) => console.error('Video error:', e.target.error ? e.target.error.message : 'Unknown error')}
-          >
-            <source src="/images/Sale Pitch video.mp4" type="video/mp4" />
-            <source src="/images/fallback-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <div className="image-video-stack">
+          <picture>
+            <source type="image/webp" srcSet="/images/Doge-vs-warrior-final.webp" />
+            <img
+              src="/images/Doge-vs-warrior-final.webp"
+              alt="Meme Royale Game - Doge vs Warrior"
+              width="500"
+              height="281"
+              loading="lazy"
+            />
+          </picture>
         </div>
       </div>
     </section>

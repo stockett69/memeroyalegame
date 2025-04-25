@@ -11,6 +11,8 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -22,10 +24,13 @@ body {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
   z-index: 50;
@@ -49,6 +54,7 @@ header {
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -103,6 +109,7 @@ nav ul {
   margin: 0;
   padding: 0;
   max-width: 1200px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -112,6 +119,7 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   padding: 0.5rem 1rem;
+  font-size: 1rem;
 }
 
 nav a:hover {
@@ -119,12 +127,13 @@ nav a:hover {
 }
 
 .section {
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   text-align: center;
   position: static;
   z-index: 50;
   background: transparent;
   overflow: visible;
+  width: 100%;
 }
 
 /* Specific fix for Tokenomics section */
@@ -176,11 +185,13 @@ p {
 
 .hero-section {
   background: linear-gradient(180deg, rgba(106, 13, 173, 0.2), transparent);
-  padding: 1rem 2rem 4rem 2rem;
+  padding: 2rem 2rem 4rem 2rem;
+  width: 100%;
 }
 
 .hero-content {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   overflow: visible;
 }
@@ -195,7 +206,7 @@ p {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
 }
 
@@ -204,16 +215,19 @@ p {
   flex-direction: column;
   align-items: center;
   flex: 1;
+  min-width: 300px;
 }
 
 .image-video-stack picture {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .image-video-stack img {
   max-width: 100%;
-  width: 600px;
+  width: 100%;
+  max-width: 500px; /* Reduced for desktop */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
@@ -231,15 +245,17 @@ p {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .video-group video {
   max-width: 100%;
-  width: 600px;
-  height: 337px;
+  width: 100%;
+  max-width: 500px; /* Reduced for desktop */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
-  object-fit: cover;
+  object-fit: contain; /* Changed to contain for better scaling */
   transition: transform 0.3s ease;
   z-index: 50;
   pointer-events: auto;
@@ -255,16 +271,19 @@ p {
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .gameplay-images picture {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .gameplay-images img {
   max-width: 100%;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
@@ -281,6 +300,7 @@ p {
 .extra-content {
   padding: 2rem;
   text-align: center;
+  width: 100%;
 }
 
 .extra-content h3 {
@@ -298,6 +318,7 @@ p {
   align-items: center;
   margin-top: 2rem;
   position: relative;
+  width: 100%;
 }
 
 .timeline-item {
@@ -330,8 +351,9 @@ p {
 }
 
 .team-section {
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   text-align: center;
+  width: 100%;
 }
 
 .team {
@@ -346,6 +368,7 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .team-image {
@@ -407,7 +430,8 @@ p {
 
 /* Styles for PresaleWidget */
 .presale-widget {
-  width: 320px;
+  width: 100%;
+  max-width: 400px; /* Increased for desktop */
   z-index: 50;
   border: 4px solid #DAA520 !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(218, 165, 32, 0.2), 0 0 12px #6A0DAD;
@@ -423,10 +447,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
+  min-width: 300px;
 }
 
 .presale-widget p {
-  max-width: 80vw;
+  max-width: 100%;
 }
 
 .presale-text {
@@ -485,6 +511,7 @@ p {
   margin-bottom: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1rem;
 }
 
 .presale-button:hover {
@@ -496,12 +523,39 @@ p {
   cursor: not-allowed;
 }
 
+/* RainbowKit-inspired Connect Wallet button */
+.rainbow-connect-button {
+  width: 100%;
+  background: linear-gradient(90deg, #007bff, #8b00ff);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.rainbow-connect-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.rainbow-connect-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .transaction-status {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
   font-weight: bold;
   z-index: 4001;
+  font-size: 1rem;
 }
 
 .transaction-status.pending {
@@ -519,7 +573,7 @@ p {
   color: #ffffff;
 }
 
-/* Center the RainbowKit modal */
+/* RainbowKit modal styling */
 [data-rk] [role="dialog"] {
   position: fixed !important;
   top: 50% !important;
@@ -527,50 +581,54 @@ p {
   transform: translate(-50%, -50%) !important;
   z-index: 60000 !important;
   margin: 0 !important;
-  border: 2px solid #DAA520 !important;
-  border-radius: 12px !important;
-  padding: 1rem !important;
-  max-width: 480px !important;
-  max-height: 80vh !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  max-width: 420px !important;
   width: 90vw !important;
+  max-height: 80vh !important;
   overflow-y: auto;
-  background: linear-gradient(145deg, #2a2a2a, #1a1a1a) !important;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(106, 13, 173, 0.7) !important;
-  backdrop-filter: blur(5px) !important;
-  word-break: break-word;
+  background: #1a1a1a !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  font-family: 'Inter', sans-serif !important;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-[data-rk] [role="dialog"] h1 {
-  color: #DAA520 !important;
-  font-size: 1.5rem !important;
-  font-weight: bold !important;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(106, 13, 173, 0.7) !important;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 [data-rk] [data-reach-dialog-overlay] {
   z-index: 59999 !important;
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(5px) !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px) !important;
+  animation: overlayFadeIn 0.3s ease-in-out;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+[data-rk] [role="dialog"] h1 {
+  color: #ffffff !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
 }
 
 [data-rk] [role="dialog"] * {
   box-sizing: border-box !important;
 }
 
-/* Standardize wallet icons */
-[data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-  object-fit: contain !important;
-  border-radius: 4px !important;
-  background: #ffffff !important;
-  padding: 2px !important;
-  box-sizing: border-box !important;
-}
-
-/* Style wallet buttons */
+/* Wallet buttons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
   display: flex !important;
   align-items: center !important;
@@ -578,112 +636,109 @@ p {
   width: 100% !important;
   padding: 0.75rem !important;
   background: #2a2a2a !important;
-  border: 1px solid #DAA520 !important;
-  border-radius: 8px !important;
-  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
   color: #ffffff !important;
   font-weight: 500 !important;
-  gap: 0.75rem !important;
+  font-size: 1rem !important;
+  gap: 1rem !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
-/* Hover effect for wallet buttons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button:hover {
   background: #3a3a3a !important;
-  transform: scale(1.02) !important;
+  transform: scale(1.01) !important;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2) !important;
 }
 
-/* Style modal links */
+/* Wallet icons */
+[data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  padding: 2px !important;
+}
+
+/* Modal links */
 [data-rk] [role="dialog"] a {
-  color: #DAA520 !important;
+  color: #007bff !important;
   text-decoration: none !important;
+  font-weight: 500 !important;
 }
 
 [data-rk] [role="dialog"] a:hover {
-  color: #b88b1d !important;
+  color: #8b00ff !important;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .section {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
   }
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .tagline {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   .header-content {
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
   .social-links {
+    gap: 0.5rem;
     justify-content: flex-end;
   }
   .social-icon {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   nav {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
   }
   nav ul {
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
   nav a {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
   }
   .image-video-stack img,
   .video-group video,
   .gameplay-images img {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     height: auto;
   }
   .team-image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
   .presale-widget {
-    width: 280px;
+    max-width: 280px;
   }
   .presale-widget-wrapper {
     justify-content: center;
+  }
+  .rainbow-connect-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
   [data-rk] [role="dialog"] {
     max-height: 70vh !important;
+    width: 95vw !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
   }
-  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-    width: 28px !important;
-    height: 28px !important;
-    min-width: 28px !important;
-    min-height: 28px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  nav a {
-    font-size: 0.8rem;
-    padding: 0.5rem 0.6rem;
-  }
-  .image-video-stack img,
-  .video-group video,
-  .gameplay-images img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-  }
-  .presale-widget {
-    width: 260px;
-  }
-  .presale-widget-wrapper {
-    justify-content: center;
-  }
-  [data-rk] [role="dialog"] {
-    max-height: 60vh !important;
+  [data-rk] [role="dialog"] h1 {
+    font-size: 1.3rem !important;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
     width: 24px !important;
@@ -693,6 +748,41 @@ p {
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
     padding: 0.5rem !important;
+    font-size: 0.9rem !important;
     gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  nav a {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.4rem;
+  }
+  .image-video-stack img,
+  .video-group video,
+  .gameplay-images img {
+    max-width: 300px;
+  }
+  .presale-widget {
+    max-width: 260px;
+  }
+  .rainbow-connect-button {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+  [data-rk] [role="dialog"] {
+    max-height: 60vh !important;
+    padding: 0.5rem !important;
+  }
+  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+  }
+  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
+    padding: 0.4rem !important;
+    gap: 0.4rem !important;
+    font-size: 0.8rem !important;
   }
 }

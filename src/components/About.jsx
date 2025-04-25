@@ -1,3 +1,4 @@
+// src/components/About.jsx
 function About() {
   return (
     <section id="about" className="section">

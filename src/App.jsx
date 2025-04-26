@@ -1,4 +1,3 @@
-// src/App.jsx
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
@@ -18,9 +17,9 @@ function App() {
     <div className="app-wrapper">
       <Lightning />
       <Header />
-      <Nav />
-      <Home />
-      <About />
+      {/* <Nav /> */}
+      {/* <Home /> */}
+      {/* <About /> */}
       <GamePlayPreview />
       <Tokenomics />
       <Roadmap />

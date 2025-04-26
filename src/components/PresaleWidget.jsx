@@ -185,7 +185,7 @@ function PresaleWidget({ title = 'Presale' } = {}) {
             }}
             className="rainbow-connect-button"
           >
-            {account ? account.displayName : 'Connect Wallet'}
+            {account ? 'Disconnect Wallet' : 'Connect Wallet'}
           </button>
         )}
       </ConnectButton.Custom>

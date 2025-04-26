@@ -1,17 +1,14 @@
 function Community() {
   return (
     <section id="community" className="section">
-      <div className="container">
-        <h2>Join Our Community</h2>
-        <p>Connect with us on social media and be part of the Meme Royale Game community!</p>
-        <div className="button-group">
-          <a href="https://x.com/MemeRoyaleGame" className="btn" target="_blank" rel="noopener noreferrer">
-            Join on X
-          </a>
-          <a href="https://t.me/+C4fJoHlaRRFkMGIx" className="btn" target="_blank" rel="noopener noreferrer">
-            Join on Telegram
-          </a>
-        </div>
+      <h2>Join Our Community</h2>
+      <div className="social-links">
+        <a href="https://x.com/memeroyalegame" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Join our community on X">
+          <i className="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://t.me/memeroyalegame" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Join our community on Telegram">
+          <i className="fab fa-telegram-plane"></i>
+        </a>
       </div>
     </section>
   );

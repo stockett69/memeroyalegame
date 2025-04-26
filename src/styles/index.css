@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+  padding-top: 120px; /* Account for fixed header (70px) and nav (50px) on desktop */
 }
 
 /* Prevent scrolling when the modal is open */
@@ -133,14 +134,14 @@ body:has([data-rk] [role="dialog"]) {
   }
 
   [data-rk] [role="dialog"] button span {
-    font-size: 0.55rem !important;
+    font-size: 0.65rem !important;
     text-align: center !important;
     color: #333333 !important;
   }
 
   [data-rk] [role="dialog"] button img {
-    width: 19px !important;
-    height: 19px !important;
+    width: 38px !important;
+    height: 38px !important;
   }
 
   [data-rk] [role="dialog"] [data-testid="rk-wallet-option-walletconnect"] + div {
@@ -166,7 +167,7 @@ body:has([data-rk] [role="dialog"]) {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
   background: #1a1a1a;
   padding: 1rem 0;
@@ -179,7 +180,7 @@ header {
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between h1 and social links */
   align-items: center;
   max-width: 1200px;
   width: 100%;
@@ -199,6 +200,13 @@ h1 {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+/* Social links within header */
+.social-links-above-nav {
+  display: flex;
+  gap: 1rem;
+  z-index: 600; /* Above nav but below header */
 }
 
 .social-icon {
@@ -230,8 +238,9 @@ nav {
   background: #1a1a1a;
   padding: 1.5rem 1rem;
   margin-bottom: 1rem;
-  position: sticky;
-  top: 70px; /* Matches header min-height on desktop */
+  position: fixed;
+  top: 70px; /* Below the header */
+  left: 0;
   z-index: 500;
   border-bottom: 1px solid #DAA520;
   min-height: 50px;
@@ -310,7 +319,7 @@ h5 {
   font-size: 1.2rem;
   margin: 0.5rem 0;
   color: #DAA520;
-  position: vary;
+  position: relative;
   z-index: 50;
   text-shadow: 0 0 4px rgba(255, 255, 250, 0.8), 0 0 8px rgba(106, 13, 173, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -710,6 +719,7 @@ p {
     width: 100vw !important;
     padding: 0 !important;
     margin: 0 !important;
+    padding-top: 150px !important; /* Account for fixed header (60px) and nav (90px) on mobile */
   }
 
   .container {
@@ -727,23 +737,22 @@ p {
   }
 
   .header-content {
-    flex-direction: column !important;
+    flex-direction: row !important; /* Keep row layout for header content */
     gap: 0.5rem !important;
     padding: 0 0.5rem !important;
-    align-items: center !important;
+    align-items: center !important; /* Center vertically */
+    justify-content: space-between !important; /* Space between h1 and social links */
     width: 100% !important;
   }
 
   h1 {
     font-size: 1.8rem !important;
     margin: 0 !important;
+    text-align: center !important; /* Center on mobile */
   }
 
-  .social-links {
+  .social-links-above-nav {
     gap: 0.8rem !important;
-    justify-content: center !important;
-    width: 100% !important;
-    margin-top: 0.5rem !important;
   }
 
   .social-icon {
@@ -752,50 +761,77 @@ p {
 
   nav {
     padding: 0.5rem !important;
-    min-height: auto !important;
+    min-height: 90px !important;
     width: 100% !important;
-    top: 60px !important; /* Matches header min-height on mobile */
+    position: fixed !important;
+    top: 60px !important; /* Below header (60px) */
+    left: 0 !important;
+    z-index: 500 !important;
+    margin-bottom: 0 !important;
   }
 
   nav ul {
     display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr 1.5fr 1fr;
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto auto;
     gap: 0.3rem !important;
     list-style: none;
     margin: 0 !important;
-    padding: 0 0.5rem !important;
+    padding: 0 !important;
     width: 100% !important;
     justify-items: center !important;
     align-items: center !important;
   }
 
-  nav ul li:nth-child(1), /* Home */
-  nav ul li:nth-child(2), /* About */
-  nav ul li:nth-child(3), /* Tokenomics */
-  nav ul li:nth-child(4), /* Game Play Preview */
+  nav ul li:nth-child(1) { /* Home */
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  nav ul li:nth-child(2) { /* About */
+    grid-row: 1;
+    grid-column: 3;
+  }
+
+  nav ul li:nth-child(3) { /* Tokenomics */
+    grid-row: 1;
+    grid-column: 4;
+  }
+
+  nav ul li:nth-child(4) { /* Gameplay */
+    grid-row: 1;
+    grid-column: 5;
+  }
+
   nav ul li:nth-child(5) { /* Community */
     grid-row: 1;
+    grid-column: 6;
   }
 
-  nav ul li:nth-child(6), /* Team */
-  nav ul li:nth-child(7), /* FAQ */
-  nav ul li:nth-child(8), /* Whitepaper */
+  nav ul li:nth-child(6) { /* Team */
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  nav ul li:nth-child(7) { /* FAQ */
+    grid-row: 2;
+    grid-column: 3;
+  }
+
+  nav ul li:nth-child(8) { /* Whitepaper */
+    grid-row: 2;
+    grid-column: 4;
+  }
+
   nav ul li:nth-child(9) { /* Contact */
     grid-row: 2;
-    grid-column: span 1;
+    grid-column: 5;
   }
-
-  nav ul li:nth-child(6) { grid-column: 2; }
-  nav ul li:nth-child(7) { grid-column: 3; }
-  nav ul li:nth-child(8) { grid-column: 4; }
-  nav ul li:nth-child(9) { grid-column: 5; }
 
   nav a {
     font-size: 0.9rem !important;
     padding: 0.3rem 0.3rem !important;
     text-align: center !important;
-    white-space: nowrap !important;
   }
 
   .section {

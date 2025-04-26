@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(145deg, #2a2a2a, #1a1a1a); /* Fallback in case Lightning.jsx fails */
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
   background-size: cover;
   color: #ffffff;
   line-height: 1.6;
@@ -31,6 +31,42 @@ body {
 /* Prevent scrolling when the modal is open */
 body:has([data-rk] [role="dialog"]) {
   overflow: hidden;
+}
+
+/* Fix RainbowKit modal on mobile */
+[data-rk] [role="dialog"] {
+  border: 2px solid #DAA520 !important;
+  border-radius: 16px !important;
+  width: 90% !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  position: fixed !important;
+}
+
+/* Fix alignment of wallet icons in the modal */
+[data-rk] [role="dialog"] button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  text-align: left !important;
+}
+
+/* Ensure modal content is scrollable if needed */
+[data-rk] [role="dialog"] > div {
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
+
+/* Fix modal button responsiveness */
+[data-rk] [role="dialog"] button:focus,
+[data-rk] [role="dialog"] button:active {
+  outline: none !important;
+  transform: scale(0.98) !important;
 }
 
 .container {
@@ -533,23 +569,6 @@ p {
 .rainbow-connect-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-/* Add border around the entire modal pop-up */
-[data-rk] [role="dialog"] {
-  border: 2px solid #DAA520 !important;
-  border-radius: 16px !important;
-}
-
-/* Fix alignment of wallet icons in the modal */
-[data-rk] [role="dialog"] button {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1rem;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  text-align: left;
 }
 
 .transaction-status {

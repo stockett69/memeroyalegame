@@ -34,7 +34,7 @@ function PresaleWidget({ title = 'Presale' } = {}) {
   useEffect(() => {
     if (readError) {
       console.error('Error reading totalRaised:', readError);
-      setUsdRaised(0); // Fallback to 0 if the contract call fails
+      setUsdRaised(0);
     }
     if (totalRaised) {
       const ethRaised = parseFloat(formatEther(totalRaised));
@@ -90,19 +90,21 @@ function PresaleWidget({ title = 'Presale' } = {}) {
   }, [ethAmount]);
 
   const handleConnectClick = () => {
-    const scrollY = window.scrollY;
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (document.querySelector('[data-rk] [role="dialog"]')) {
-          window.scrollTo(0, scrollY);
-        }
-        if (!document.querySelector('[data-rk] [role="dialog"]')) {
-          window.scrollTo(0, scrollY);
-          observer.disconnect();
-        }
+    if (!address) {
+      const scrollY = window.scrollY;
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (document.querySelector('[data-rk] [role="dialog"]')) {
+            window.scrollTo(0, scrollY);
+          }
+          if (!document.querySelector('[data-rk] [role="dialog"]')) {
+            window.scrollTo(0, scrollY);
+            observer.disconnect();
+          }
+        });
       });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
   };
 
   const handleBuy = async () => {

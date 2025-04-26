@@ -14,7 +14,7 @@ import { metaMaskWallet, coinbaseWallet, walletConnectWallet, phantomWallet } fr
 
 const queryClient = new QueryClient();
 
-const appUrl = import.meta.env.VITE_APP_URL || 'https://home-5017731792.app-ionos.space';
+const appUrl = 'https://www.memeroyalegame.com';
 
 const config = getDefaultConfig({
   appName: 'Meme Royale Game',

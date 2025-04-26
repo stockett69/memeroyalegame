@@ -54,10 +54,22 @@ body:has([data-rk] [role="dialog"]) {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap to prevent overlap */
   width: 100%;
   padding: 0.75rem 1rem;
   text-align: left;
+}
+
+/* Reduce wallet icon size in the modal */
+[data-rk] [role="dialog"] button img {
+  width: 24px !important; /* Reduced icon size */
+  height: 24px !important;
+}
+
+/* Ensure modal button text doesn’t overlap */
+[data-rk] [role="dialog"] button span {
+  font-size: 1rem !important;
+  white-space: normal !important;
 }
 
 .container {
@@ -647,9 +659,18 @@ p {
 
   nav ul {
     gap: 0.5rem !important;
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
+    justify-content: space-around !important;
     width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding: 0 0.5rem !important;
+  }
+
+  nav ul li {
+    flex: 0 0 auto !important;
   }
 
   nav a {

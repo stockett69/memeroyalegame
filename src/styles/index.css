@@ -37,7 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
-  padding-top: 120px; /* Account for fixed header (70px) and nav (50px) on desktop */
+  padding-top: 140px; /* Account for fixed header (70px) and nav (70px) on desktop */
 }
 
 /* Prevent scrolling when the modal is open */
@@ -109,52 +109,6 @@ body:has([data-rk] [role="dialog"]) {
 [data-rk] [role="dialog"] [data-testid="rk-wallet-option-walletconnect"] + div img {
   max-width: 100% !important;
   height: auto !important;
-}
-
-/* Adjust modal styling for mobile */
-@media (max-width: 768px) {
-  [data-rk] [role="dialog"] {
-    top: 15% !important;
-    transform: translate(-50%, 0) !important;
-    width: 95vw !important;
-    max-width: 494px !important;
-    max-height: 65vh !important;
-    margin: 0.5rem !important;
-    padding: 0.75rem !important;
-    background: #1a1a1a !important;
-    overflow-y: visible !important;
-  }
-
-  [data-rk] [role="dialog"] button {
-    padding: 0.41rem !important;
-    gap: 0.41rem !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  [data-rk] [role="dialog"] button span {
-    font-size: 0.65rem !important;
-    text-align: center !important;
-    color: #333333 !important;
-  }
-
-  [data-rk] [role="dialog"] button img {
-    width: 38px !important;
-    height: 38px !important;
-  }
-
-  [data-rk] [role="dialog"] [data-testid="rk-wallet-option-walletconnect"] + div {
-    position: absolute !important;
-    bottom: 100% !important;
-    margin-bottom: 0.5rem !important;
-    width: 100% !important;
-    max-height: 82px !important;
-    overflow-y: auto !important;
-    background: #2a2a2a !important;
-    border-radius: 8px !important;
-    padding: 0.5rem !important;
-  }
 }
 
 .container {
@@ -239,7 +193,7 @@ nav {
   padding: 1.5rem 1rem;
   margin-bottom: 1rem;
   position: fixed;
-  top: 70px; /* Below the header */
+  top: 90px; /* Increased to create more space below header */
   left: 0;
   z-index: 500;
   border-bottom: 1px solid #DAA520;
@@ -272,6 +226,20 @@ nav a {
 
 nav a:hover {
   color: #DAA520;
+}
+
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: #DAA520;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 510; /* Above nav */
 }
 
 .section {
@@ -705,7 +673,7 @@ p {
   color: #ffffff;
 }
 
-/* Enhanced Mobile Responsiveness */
+/* Mobile menu styles */
 @media (max-width: 768px) {
   html, body {
     width: 100% !important;
@@ -719,7 +687,7 @@ p {
     width: 100vw !important;
     padding: 0 !important;
     margin: 0 !important;
-    padding-top: 150px !important; /* Account for fixed header (60px) and nav (90px) on mobile */
+    padding-top: 110px !important; /* Account for fixed header (60px) and nav (50px) on mobile */
   }
 
   .container {
@@ -761,7 +729,7 @@ p {
 
   nav {
     padding: 0.5rem !important;
-    min-height: 90px !important;
+    min-height: 50px !important; /* Reduced height for hamburger menu */
     width: 100% !important;
     position: fixed !important;
     top: 60px !important; /* Below header (60px) */
@@ -770,67 +738,44 @@ p {
     margin-bottom: 0 !important;
   }
 
-  nav ul {
-    display: grid !important;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto auto;
-    gap: 0.3rem !important;
-    list-style: none;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    justify-items: center !important;
-    align-items: center !important;
+  .menu-toggle {
+    display: block; /* Show on mobile */
+    background: none;
+    border: none;
+    color: #DAA520;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 510; /* Above nav */
   }
 
-  nav ul li:nth-child(1) { /* Home */
-    grid-row: 1;
-    grid-column: 2;
+  .nav-menu {
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Below the nav bar */
+    left: 0;
+    width: 100%;
+    background: #1a1a1a;
+    padding: 1rem 0;
+    border-top: 1px solid #DAA520;
   }
 
-  nav ul li:nth-child(2) { /* About */
-    grid-row: 1;
-    grid-column: 3;
+  .nav-menu.open {
+    display: flex; /* Show when open */
   }
 
-  nav ul li:nth-child(3) { /* Tokenomics */
-    grid-row: 1;
-    grid-column: 4;
-  }
-
-  nav ul li:nth-child(4) { /* Gameplay */
-    grid-row: 1;
-    grid-column: 5;
-  }
-
-  nav ul li:nth-child(5) { /* Community */
-    grid-row: 1;
-    grid-column: 6;
-  }
-
-  nav ul li:nth-child(6) { /* Team */
-    grid-row: 2;
-    grid-column: 2;
-  }
-
-  nav ul li:nth-child(7) { /* FAQ */
-    grid-row: 2;
-    grid-column: 3;
-  }
-
-  nav ul li:nth-child(8) { /* Whitepaper */
-    grid-row: 2;
-    grid-column: 4;
-  }
-
-  nav ul li:nth-child(9) { /* Contact */
-    grid-row: 2;
-    grid-column: 5;
+  nav ul li {
+    width: 100%;
+    text-align: center;
   }
 
   nav a {
-    font-size: 0.9rem !important;
-    padding: 0.3rem 0.3rem !important;
+    display: block;
+    font-size: 1rem !important;
+    padding: 0.5rem !important;
     text-align: center !important;
   }
 

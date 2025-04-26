@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './styles/index.css';
-import '@rainbow-me/rainbowkit/styles.css'; // Ensure correct CSS import
+import './components/Lightning.css';
+import '@rainbow-me/rainbowkit/styles.css';
 import { WagmiProvider } from 'wagmi';
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
@@ -13,12 +14,14 @@ import { metaMaskWallet, coinbaseWallet, walletConnectWallet, phantomWallet } fr
 
 const queryClient = new QueryClient();
 
+const appUrl = import.meta.env.VITE_APP_URL || 'https://home-5017731792.app-ionos.space';
+
 const config = getDefaultConfig({
   appName: 'Meme Royale Game',
   projectId: 'f1156663128b123609d7ca8ca861d973',
   chains: [mainnet],
   ssr: false,
-  appUrl: 'http://localhost:3000',
+  appUrl: appUrl,
   wallets: [
     {
       groupName: 'Popular',

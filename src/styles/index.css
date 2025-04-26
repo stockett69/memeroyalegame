@@ -28,6 +28,16 @@ body {
   min-height: 100vh;
 }
 
+/* App wrapper for global layout */
+.app-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
 /* Prevent scrolling when the modal is open */
 body:has([data-rk] [role="dialog"]) {
   overflow: hidden;
@@ -576,77 +586,201 @@ p {
   color: #ffffff;
 }
 
-/* Mobile Responsiveness */
+/* Enhanced Mobile Responsiveness */
 @media (max-width: 768px) {
-  .section {
-    padding: 1rem;
+  html, body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  h1 {
-    font-size: 2rem;
+
+  .app-wrapper {
+    width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  h2 {
-    font-size: 2rem;
+
+  .container {
+    padding: 0 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
   }
-  .tagline {
-    font-size: 1.8rem;
+
+  header {
+    padding: 0.5rem 0 !important;
+    min-height: 60px !important;
+    width: 100% !important;
   }
+
   .header-content {
-    flex-direction: row;
-    gap: 0.5rem;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    padding: 0 0.5rem !important;
+    align-items: center !important;
+    width: 100% !important;
   }
+
+  h1 {
+    font-size: 1.8rem !important;
+    margin: 0 !important;
+  }
+
   .social-links {
-    gap: 0.8rem;
-    justify-content: flex-end;
+    gap: 0.8rem !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 0.5rem !important;
   }
+
   .social-icon {
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
   }
+
   nav {
-    padding: 1rem;
+    padding: 0.5rem !important;
+    min-height: auto !important;
+    width: 100% !important;
   }
+
   nav ul {
-    gap: 0.5rem;
+    gap: 0.5rem !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
   }
+
   nav a {
-    font-size: 1rem;
-    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem !important;
+    padding: 0.3rem 0.6rem !important;
   }
+
+  .section {
+    padding: 1rem 0.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .tagline {
+    font-size: 1.6rem !important;
+  }
+
+  .hero-section {
+    padding: 1rem 0.5rem 2rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .hero-content {
+    padding: 0 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .image-presale-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+
+  .image-video-stack {
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
   .image-video-stack img,
   .gameplay-images img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
   }
+
+  .gameplay-images {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .extra-content {
+    padding: 1rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .timeline {
+    padding: 0 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .timeline-item {
+    margin: 1rem 0 !important;
+    padding-left: 2rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .team-section {
+    padding: 1rem 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .team {
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .team-member {
+    width: 100% !important;
+  }
+
   .team-image {
-    width: 150px;
-    height: 150px;
+    width: 150px !important;
+    height: 150px !important;
   }
+
   .presale-widget {
-    max-width: 340px;
-    padding: 1rem;
+    max-width: 100% !important;
+    width: 90vw !important;
+    padding: 1rem !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
+
   .presale-widget-wrapper {
-    justify-content: center;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
   }
+
   .presale-text {
-    font-size: 1.1rem;
+    font-size: 1rem !important;
   }
+
   .presale-label {
-    font-size: 1.1rem;
+    font-size: 1rem !important;
   }
+
   .presale-input {
-    font-size: 1.1rem;
-    padding: 0.6rem;
+    font-size: 1rem !important;
+    padding: 0.5rem !important;
   }
+
   .presale-button {
-    padding: 0.6rem;
-    font-size: 1.1rem;
+    padding: 0.5rem !important;
+    font-size: 1rem !important;
   }
+
   .rainbow-connect-button {
-    padding: 0.6rem;
-    font-size: 1.1rem;
+    padding: 0.5rem !important;
+    font-size: 1rem !important;
   }
+
   p {
-    font-size: 1.2rem;
+    font-size: 1rem !important;
   }
 }

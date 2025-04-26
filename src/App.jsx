@@ -15,7 +15,7 @@ import Lightning from './components/Lightning';
 
 function App() {
   return (
-    <>
+    <div className="app-wrapper">
       <Lightning />
       <Header />
       <Nav />
@@ -29,7 +29,7 @@ function App() {
       <Whitepaper />
       <Contact />
       <Community />
-    </>
+    </div>
   );
 }
 

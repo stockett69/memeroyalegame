@@ -1,4 +1,3 @@
-// src/components/PresaleWidget.jsx
 import { useState, useEffect } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useReadContract, useWriteContract, useBalance, useDisconnect } from 'wagmi';

@@ -22,7 +22,7 @@ function Home() {
             </picture>
           </div>
           <div className="presale-widget-wrapper">
-            <PresaleWidget title="Presale" /> {/* Set custom title here */}
+            <PresaleWidget title="Presale" />
           </div>
         </div>
         <div className="extra-content">

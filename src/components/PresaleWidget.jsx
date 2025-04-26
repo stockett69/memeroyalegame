@@ -16,7 +16,6 @@ function PresaleWidget({ title = 'Presale' } = {}) {
   const { address } = useAccount();
   const { disconnect } = useDisconnect();
   const { writeContract, error: writeError } = useWriteContract();
-
   const { data: balance, error: balanceError, refetch: refetchBalance } = useBalance({
     address,
     query: {
@@ -26,34 +25,43 @@ function PresaleWidget({ title = 'Presale' } = {}) {
     },
   });
 
-  const { data: totalRaised, error: totalRaisedError } = useReadContract({
+  const { data: totalRaised, error: readError } = useReadContract({
     address: contractAddress,
     abi: contractABI,
-    functionName: 'totalRaised',
-    query: {
-      retry: 0,
-      poll: false,
-    },
+    functionName: 'totalRaised'
   });
 
   useEffect(() => {
-    const fetchEthPrice = async () => {
-      try {
-        const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
-        setEthPriceUSD(response.data.ethereum.usd || 2000);
-      } catch (error) {
-        setEthPriceUSD(2000);
-      }
-    };
-    fetchEthPrice();
-  }, []);
-
-  useEffect(() => {
+    if (readError) {
+      console.error('Error reading totalRaised:', readError);
+      setUsdRaised(0); // Fallback to 0 if the contract call fails
+    }
     if (totalRaised) {
       const ethRaised = parseFloat(formatEther(totalRaised));
       setUsdRaised(ethRaised * ethPriceUSD);
     }
-  }, [totalRaised, ethPriceUSD]);
+  }, [totalRaised, readError, ethPriceUSD]);
+
+  useEffect(() => {
+    const fetchEthPrice = async () => {
+      try {
+        const source = axios.CancelToken.source();
+        const timeout = setTimeout(() => {
+          source.cancel('Request timed out');
+        }, 5000);
+        const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd', {
+          cancelToken: source.token
+        });
+        clearTimeout(timeout);
+        setEthPriceUSD(response.data.ethereum.usd || 2000);
+      } catch (error) {
+        if (!axios.isCancel(error)) {
+          setEthPriceUSD(2000);
+        }
+      }
+    };
+    fetchEthPrice();
+  }, []);
 
   useEffect(() => {
     const endDate = new Date('2025-09-25T23:59:59Z').getTime();
@@ -80,6 +88,22 @@ function PresaleWidget({ title = 'Presale' } = {}) {
     const tokensPerEth = 260 / 0.001;
     setMrcAmount(Math.floor(eth * tokensPerEth));
   }, [ethAmount]);
+
+  const handleConnectClick = () => {
+    const scrollY = window.scrollY;
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (document.querySelector('[data-rk] [role="dialog"]')) {
+          window.scrollTo(0, scrollY);
+        }
+        if (!document.querySelector('[data-rk] [role="dialog"]')) {
+          window.scrollTo(0, scrollY);
+          observer.disconnect();
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
 
   const handleBuy = async () => {
     if (!address) {
@@ -116,6 +140,11 @@ function PresaleWidget({ title = 'Presale' } = {}) {
           Your ETH Balance: {balanceError || !balance ? '0.00' : parseFloat(formatEther(balance.value)).toFixed(2)} ETH
         </p>
       )}
+      {readError && (
+        <p className="presale-text" style={{ color: 'red' }}>
+          Error loading total raised: {readError.message}
+        </p>
+      )}
       <p className="presale-text">
         Countdown: <span>{countdown}</span>
       </p>
@@ -145,7 +174,14 @@ function PresaleWidget({ title = 'Presale' } = {}) {
       <ConnectButton.Custom>
         {({ account, chain, openConnectModal, openAccountModal }) => (
           <button
-            onClick={() => (account ? openAccountModal() : openConnectModal())}
+            onClick={() => {
+              if (account) {
+                openAccountModal();
+              } else {
+                openConnectModal();
+                handleConnectClick();
+              }
+            }}
             className="rainbow-connect-button"
           >
             {account ? account.displayName : 'Connect Wallet'}

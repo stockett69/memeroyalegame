@@ -1,4 +1,3 @@
-/* src/styles/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,6 +25,11 @@ body {
   overflow-y: auto;
   width: 100%;
   min-height: 100vh;
+}
+
+/* Prevent scrolling when the modal is open */
+body:has([data-rk] [role="dialog"]) {
+  overflow: hidden;
 }
 
 .container {
@@ -173,7 +177,7 @@ h5 {
   color: #DAA520;
   position: relative;
   z-index: 50;
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 8px rgba(106, 13, 173, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 4px rgba(255, 255, 250, 0.8), 0 0 8px rgba(106, 13, 173, 0.7), 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 p {
@@ -184,7 +188,6 @@ p {
 }
 
 .hero-section {
-  background: linear-gradient(180deg, rgba(106, 13, 173, 0.2), transparent);
   padding: 2rem 2rem 4rem 2rem;
   width: 100%;
 }
@@ -238,30 +241,6 @@ p {
 }
 
 .image-video-stack img:hover {
-  transform: scale(1.02);
-}
-
-.video-group {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.video-group video {
-  max-width: 100%;
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  z-index: 50;
-  pointer-events: auto;
-}
-
-.video-group video:hover {
   transform: scale(1.02);
 }
 
@@ -514,6 +493,10 @@ p {
   font-size: 1rem;
 }
 
+.pres-gap {
+  padding: 5px;
+}
+
 .presale-button:hover {
   background: #b88b1d;
 }
@@ -523,7 +506,7 @@ p {
   cursor: not-allowed;
 }
 
-/* RainbowKit-inspired Connect Wallet button */
+/* Style ConnectButton to match presale-button */
 .rainbow-connect-button {
   width: 100%;
   background: #DAA520;
@@ -536,7 +519,6 @@ p {
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
 }
 
 .rainbow-connect-button:hover {
@@ -546,6 +528,23 @@ p {
 .rainbow-connect-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Add border around the entire modal pop-up */
+[data-rk] [role="dialog"] {
+  border: 2px solid #DAA520 !important;
+  border-radius: 16px !important;
+}
+
+/* Fix alignment of wallet icons in the modal */
+[data-rk] [role="dialog"] button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
 }
 
 .transaction-status {
@@ -570,81 +569,6 @@ p {
 .transaction-status.failed {
   background: #dc3545;
   color: #ffffff;
-}
-
-/* RainbowKit modal styling */
-[data-rk] [role="dialog"] {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 60000;
-  margin: 0;
-  border-radius: 16px;
-  padding: 1.5rem;
-  max-width: 400px;
-  width: 90vw;
-  max-height: 80vh;
-  overflow-y: auto;
-  background: #1a1a1a;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  font-family: 'Inter', sans-serif;
-  border: 1px solid #DAA520;
-}
-
-[data-rk] [data-reach-dialog-overlay] {
-  z-index: 59999;
-  background: rgba(0, 0, 0, 0.7);
-}
-
-[data-rk] [role="dialog"] h1 {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-[data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: #2a2a2a;
-  border: 1px solid #DAA520;
-  border-radius: 8px;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 1rem;
-  gap: 1rem;
-  font-family: 'Inter', sans-serif;
-  transition: background-color 0.2s ease;
-  margin-bottom: 0.5rem;
-}
-
-[data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button:hover {
-  background: #3a3a3a;
-}
-
-[data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
-  object-fit: contain;
-  border-radius: 4px;
-  background: #ffffff;
-  padding: 2px;
-}
-
-[data-rk] [role="dialog"] a {
-  color: #DAA520;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-[data-rk] [role="dialog"] a:hover {
-  color: #b88b1d;
 }
 
 /* Mobile Responsiveness */
@@ -683,7 +607,6 @@ p {
     padding: 0.5rem 0.8rem;
   }
   .image-video-stack img,
-  .video-group video,
   .gameplay-images img {
     width: 100%;
     max-width: 350px;
@@ -720,25 +643,5 @@ p {
   }
   p {
     font-size: 1.2rem;
-  }
-  [data-rk] [role="dialog"] {
-    max-height: 70vh;
-    width: 95vw;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-  [data-rk] [role="dialog"] h1 {
-    font-size: 1.4rem;
-  }
-  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    min-height: 28px;
-  }
-  [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-    padding: 0.6rem 0.8rem;
-    font-size: 1rem;
-    gap: 0.8rem;
   }
 }

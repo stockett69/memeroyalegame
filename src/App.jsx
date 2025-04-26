@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Nav from './components/Nav';
 import Home from './components/Home';
 import About from './components/About';
-import GamePlayPreview from './components/GamePlayPreview'; // Add import
+import GamePlayPreview from './components/GamePlayPreview';
 import Tokenomics from './components/Tokenomics';
 import Roadmap from './components/Roadmap';
 import Team from './components/Team';
@@ -21,7 +21,7 @@ function App() {
       <Nav />
       <Home />
       <About />
-      <GamePlayPreview /> {/* Add after About */}
+      <GamePlayPreview />
       <Tokenomics />
       <Roadmap />
       <Team />

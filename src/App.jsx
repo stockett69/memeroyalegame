@@ -17,9 +17,9 @@ function App() {
     <div className="app-wrapper">
       <Lightning />
       <Header />
-      {/* <Nav /> */}
-      {/* <Home /> */}
-      {/* <About /> */}
+      <Nav />
+      <Home />
+      <About />
       <GamePlayPreview />
       <Tokenomics />
       <Roadmap />

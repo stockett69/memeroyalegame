@@ -227,7 +227,7 @@ p {
 .image-video-stack img {
   max-width: 100%;
   width: 100%;
-  max-width: 500px; /* Reduced for desktop */
+  max-width: 500px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
@@ -251,11 +251,11 @@ p {
 .video-group video {
   max-width: 100%;
   width: 100%;
-  max-width: 500px; /* Reduced for desktop */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 500px;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(106, 13, 173, 0.7);
-  object-fit: contain; /* Changed to contain for better scaling */
+  object-fit: contain;
   transition: transform 0.3s ease;
   z-index: 50;
   pointer-events: auto;
@@ -431,7 +431,7 @@ p {
 /* Styles for PresaleWidget */
 .presale-widget {
   width: 100%;
-  max-width: 400px; /* Increased for desktop */
+  max-width: 400px;
   z-index: 50;
   border: 4px solid #DAA520 !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(218, 165, 32, 0.2), 0 0 12px #6A0DAD;
@@ -526,22 +526,21 @@ p {
 /* RainbowKit-inspired Connect Wallet button */
 .rainbow-connect-button {
   width: 100%;
-  background: linear-gradient(90deg, #007bff, #8b00ff);
-  color: #ffffff;
-  font-weight: 600;
-  padding: 0.75rem;
-  border-radius: 12px;
+  background: #DAA520;
+  color: #1a1a1a;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
   border: none;
   margin-bottom: 0.5rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.3s ease;
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
 }
 
 .rainbow-connect-button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  background: #b88b1d;
 }
 
 .rainbow-connect-button:disabled {
@@ -575,104 +574,77 @@ p {
 
 /* RainbowKit modal styling */
 [data-rk] [role="dialog"] {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 60000 !important;
-  margin: 0 !important;
-  border-radius: 16px !important;
-  padding: 1.5rem !important;
-  max-width: 420px !important;
-  width: 90vw !important;
-  max-height: 80vh !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60000;
+  margin: 0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 400px;
+  width: 90vw;
+  max-height: 80vh;
   overflow-y: auto;
-  background: #1a1a1a !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(10px) !important;
-  font-family: 'Inter', sans-serif !important;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -45%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  background: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-family: 'Inter', sans-serif;
+  border: 1px solid #DAA520;
 }
 
 [data-rk] [data-reach-dialog-overlay] {
-  z-index: 59999 !important;
-  background: rgba(0, 0, 0, 0.7) !important;
-  backdrop-filter: blur(4px) !important;
-  animation: overlayFadeIn 0.3s ease-in-out;
-}
-
-@keyframes overlayFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  z-index: 59999;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 [data-rk] [role="dialog"] h1 {
-  color: #ffffff !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  margin-bottom: 1rem !important;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-[data-rk] [role="dialog"] * {
-  box-sizing: border-box !important;
-}
-
-/* Wallet buttons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  width: 100% !important;
-  padding: 0.75rem !important;
-  background: #2a2a2a !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
-  color: #ffffff !important;
-  font-weight: 500 !important;
-  font-size: 1rem !important;
-  gap: 1rem !important;
-  font-family: 'Inter', sans-serif !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #2a2a2a;
+  border: 1px solid #DAA520;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.2s ease;
+  margin-bottom: 0.5rem;
 }
 
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button:hover {
-  background: #3a3a3a !important;
-  transform: scale(1.01) !important;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2) !important;
+  background: #3a3a3a;
 }
 
-/* Wallet icons */
 [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-  width: 32px !important;
-  height: 32px !important;
-  min-width: 32px !important;
-  min-height: 32px !important;
-  object-fit: contain !important;
-  border-radius: 8px !important;
-  background: #ffffff !important;
-  padding: 2px !important;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 2px;
 }
 
-/* Modal links */
 [data-rk] [role="dialog"] a {
-  color: #007bff !important;
-  text-decoration: none !important;
-  font-weight: 500 !important;
+  color: #DAA520;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 [data-rk] [role="dialog"] a:hover {
-  color: #8b00ff !important;
+  color: #b88b1d;
 }
 
 /* Mobile Responsiveness */
@@ -732,24 +704,24 @@ p {
     font-size: 0.9rem;
   }
   [data-rk] [role="dialog"] {
-    max-height: 70vh !important;
-    width: 95vw !important;
-    padding: 1rem !important;
-    border-radius: 12px !important;
+    max-height: 70vh;
+    width: 95vw;
+    padding: 1rem;
+    border-radius: 12px;
   }
   [data-rk] [role="dialog"] h1 {
-    font-size: 1.3rem !important;
+    font-size: 1.3rem;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px !important;
-    min-height: 24px !important;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-    padding: 0.5rem !important;
-    font-size: 0.9rem !important;
-    gap: 0.5rem !important;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    gap: 0.75rem;
   }
 }
 
@@ -771,18 +743,18 @@ p {
     font-size: 0.8rem;
   }
   [data-rk] [role="dialog"] {
-    max-height: 60vh !important;
-    padding: 0.5rem !important;
+    max-height: 60vh;
+    padding: 0.5rem;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] img {
-    width: 20px !important;
-    height: 20px !important;
-    min-width: 20px !important;
-    min-height: 20px !important;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
   }
   [data-rk] [role="dialog"] div[class*="WalletButton__WalletButtonList"] > button {
-    padding: 0.4rem !important;
-    gap: 0.4rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
+    font-size: 0.8rem;
   }
 }

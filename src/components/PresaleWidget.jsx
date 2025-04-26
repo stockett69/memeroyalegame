@@ -6,7 +6,7 @@ import { parseEther, formatEther } from 'viem';
 import axios from 'axios';
 import { contractABI, contractAddress } from '../contracts/contractABI.js';
 
-function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title prop with default
+function PresaleWidget({ title = 'Presale' } = {}) {
   const [ethAmount, setEthAmount] = useState('0.001');
   const [mrcAmount, setMrcAmount] = useState(260);
   const [countdown, setCountdown] = useState('');
@@ -17,7 +17,6 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
   const { disconnect } = useDisconnect();
   const { writeContract, error: writeError } = useWriteContract();
 
-  // Fetch ETH balance
   const { data: balance, error: balanceError, refetch: refetchBalance } = useBalance({
     address,
     query: {
@@ -27,7 +26,6 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
     },
   });
 
-  // Fetch total raised only once on page load
   const { data: totalRaised, error: totalRaisedError } = useReadContract({
     address: contractAddress,
     abi: contractABI,
@@ -38,21 +36,18 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
     },
   });
 
-  // Fetch ETH price from CoinGecko
   useEffect(() => {
     const fetchEthPrice = async () => {
       try {
         const response = await axios.get('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
         setEthPriceUSD(response.data.ethereum.usd || 2000);
       } catch (error) {
-        console.error('Error fetching ETH price:', error);
         setEthPriceUSD(2000);
       }
     };
     fetchEthPrice();
   }, []);
 
-  // Update USD raised based on totalRaised
   useEffect(() => {
     if (totalRaised) {
       const ethRaised = parseFloat(formatEther(totalRaised));
@@ -60,7 +55,6 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
     }
   }, [totalRaised, ethPriceUSD]);
 
-  // Countdown timer
   useEffect(() => {
     const endDate = new Date('2025-09-25T23:59:59Z').getTime();
     const updateCountdown = () => {
@@ -81,14 +75,12 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
     return () => clearInterval(interval);
   }, []);
 
-  // Calculate MRC amount
   useEffect(() => {
     const eth = parseFloat(ethAmount) || 0;
     const tokensPerEth = 260 / 0.001;
     setMrcAmount(Math.floor(eth * tokensPerEth));
   }, [ethAmount]);
 
-  // Buy MRC
   const handleBuy = async () => {
     if (!address) {
       setTransactionStatus({ message: 'Please connect your wallet', type: 'failed' });
@@ -118,7 +110,7 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
 
   return (
     <div className="presale-widget">
-      <h2>{title}</h2> {/* Use h2 with customizable title */}
+      <h2>{title}</h2>
       {address && (
         <p className="presale-text">
           Your ETH Balance: {balanceError || !balance ? '0.00' : parseFloat(formatEther(balance.value)).toFixed(2)} ETH
@@ -151,12 +143,12 @@ function PresaleWidget({ title = 'Presale' } = {}) { // Add customizable title p
         You will receive: <span>{mrcAmount.toLocaleString()} MRC</span>
       </p>
       <ConnectButton.Custom>
-        {({ account, chain, openConnectModal }) => (
+        {({ account, chain, openConnectModal, openAccountModal }) => (
           <button
-            onClick={account ? disconnect : openConnectModal}
-            className="presale-button"
+            onClick={() => (account ? openAccountModal() : openConnectModal())}
+            className="rainbow-connect-button"
           >
-            {account ? 'Disconnect' : 'Connect Wallet'}
+            {account ? account.displayName : 'Connect Wallet'}
           </button>
         )}
       </ConnectButton.Custom>

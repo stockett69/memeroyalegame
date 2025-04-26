@@ -117,33 +117,42 @@ body:has([data-rk] [role="dialog"]) {
     transform: translate(-50%, 0) !important;
     width: 95vw !important;
     max-width: 494px !important;
-    max-height: 65vh !important; /* Reduced to fit content snugly */
+    max-height: 65vh !important;
     margin: 0.5rem !important;
     padding: 0.75rem !important;
-    background: transparent !important;
-    overflow-y: visible !important; /* Remove scrolling */
+    background: #1a1a1a !important;
+    overflow-y: visible !important;
   }
 
   [data-rk] [role="dialog"] button {
-    padding: 0.41rem !important; /* Reduced by 20% from 0.51rem */
-    gap: 0.41rem !important; /* Reduced by 20% from 0.51rem */
+    padding: 0.41rem !important;
+    gap: 0.41rem !important;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
   [data-rk] [role="dialog"] button span {
-    font-size: 0.55rem !important; /* Reduced by 20% from 0.68rem */
+    font-size: 0.55rem !important;
     text-align: center !important;
+    color: #ffffff !important;
   }
 
   [data-rk] [role="dialog"] button img {
-    width: 11px !important; /* Reduced by 20% from 14px */
-    height: 11px !important;
+    width: 19px !important; /* Increased by 75% from 11px */
+    height: 19px !important;
   }
 
   [data-rk] [role="dialog"] [data-testid="rk-wallet-option-walletconnect"] + div {
-    max-height: 82px !important; /* Reduced by 20% from 102px */
+    position: absolute !important;
+    bottom: 100% !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+    max-height: 82px !important;
+    overflow-y: auto !important;
+    background: #2a2a2a !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
   }
 }
 
@@ -189,7 +198,7 @@ h1 {
 .social-links {
   display: flex;
   gap: 1rem;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .social-icon {
@@ -203,7 +212,7 @@ h1 {
 }
 
 .social-icon i {
-  margin-right: 0.5rem;
+  margin-right: 0;
 }
 
 nav {
@@ -567,7 +576,7 @@ p {
   border-radius: 9999px;
   height: 1rem;
   margin-bottom: 1rem;
-  display: block !important; /* Ensure progress bar is visible */
+  display: block !important;
 }
 
 .presale-progress-fill {
@@ -846,9 +855,9 @@ p {
   }
 
   .presale-widget {
-    max-width: 400px !important; /* Restored to original size */
+    max-width: 400px !important;
     width: 90vw !important;
-    padding: 1.5rem !important; /* Restored to original padding */
+    padding: 1.5rem !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
   }

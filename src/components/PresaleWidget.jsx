@@ -88,24 +88,6 @@ function PresaleWidget({ title = 'Presale' } = {}) {
     setMrcAmount(Math.floor(eth * tokensPerEth));
   }, [ethAmount]);
 
-  const handleConnectClick = () => {
-    if (!address) {
-      const scrollY = window.scrollY;
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (document.querySelector('[data-rk] [role="dialog"]')) {
-            window.scrollTo(0, scrollY);
-          }
-          if (!document.querySelector('[data-rk] [role="dialog"]')) {
-            window.scrollTo(0, scrollY);
-            observer.disconnect();
-          }
-        });
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-    }
-  };
-
   const handleBuy = async () => {
     if (!address) {
       setTransactionStatus({ message: 'Please connect your wallet', type: 'failed' });
@@ -173,21 +155,25 @@ function PresaleWidget({ title = 'Presale' } = {}) {
         You will receive: <span>{mrcAmount.toLocaleString()} MRC</span>
       </p>
       <ConnectButton.Custom>
-        {({ account, chain, openConnectModal, openAccountModal }) => (
-          <button
-            onClick={() => {
-              if (account) {
-                openAccountModal();
-              } else {
-                openConnectModal();
-                handleConnectClick();
-              }
-            }}
-            className="rainbow-connect-button"
-          >
-            {account ? 'Disconnect Wallet' : 'Connect Wallet'}
-          </button>
-        )}
+        {({ account, chain, openConnectModal, openAccountModal }) => {
+          console.log('ConnectButton rendered:', { account, chain });
+          return (
+            <button
+              onClick={() => {
+                if (account) {
+                  console.log('Opening account modal for:', account.address);
+                  openAccountModal();
+                } else {
+                  console.log('Opening connect modal');
+                  openConnectModal();
+                }
+              }}
+              className="rainbow-connect-button"
+            >
+              {account ? 'Disconnect Wallet' : 'Connect Wallet'}
+            </button>
+          );
+        }}
       </ConnectButton.Custom>
       <button
         onClick={handleBuy}

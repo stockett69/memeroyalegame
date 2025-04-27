@@ -10,17 +10,6 @@ function Home() {
           JOIN THE ULTIMATE MEME COIN GAMING EXPERIENCE!
         </p>
         <div className="image-presale-container">
-          <div className="image-video-stack">
-            <picture>
-              <source type="image/webp" srcSet="/images/WildThingCardStatrev.webp" />
-              <img
-                src="/images/WildThingCardStatrev.webp"
-                alt="Wild Thing Card from Meme Royale Game"
-                width="600"
-                height="337"
-              />
-            </picture>
-          </div>
           <div className="presale-widget-wrapper">
             <PresaleWidget title="Presale" />
           </div>

@@ -3,7 +3,7 @@ function Header() {
     <>
       <header>
         <div className="header-content">
-          <h1>Meme Royale Game Presale</h1>
+          <h1>Meme Royale Game</h1>
           <div className="social-links-above-nav">
             <a href="https://x.com/MemeRoyaleGame" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X">
               <i className="fab fa-x-twitter"></i>

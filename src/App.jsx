@@ -52,7 +52,7 @@ function App() {
       <FAQ />
       <Whitepaper />
       <Contact />
-      <Lightning />
+      {/* <Lightning /> */} {/* Commented out to disable transparent black box */}
     </div>
   );
 }

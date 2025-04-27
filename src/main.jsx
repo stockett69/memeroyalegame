@@ -43,7 +43,7 @@ const config = createConfig({
 
 // Component to dynamically set modalSize based on screen width
 function AppWrapper() {
-  const [modalSize, setModalSize] = useState(window.innerWidth > 768 ? 'wide' : 'compact');
+  const [modalSize, setModalSize] = useState(window.innerWidth > 768 ? 'compact' : 'compact');
 
   useEffect(() => {
     const handleResize = () => {

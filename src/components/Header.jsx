@@ -11,7 +11,6 @@ function Header() {
             </a>
             <a href="https://t.me/+C4fJoHlaRRFkMGIx" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Join us on Telegram">
               <i className="fab fa-telegram-plane"></i>
-              <span className="icon-fallback">Telegram</span>
             </a>
           </div>
         </div>

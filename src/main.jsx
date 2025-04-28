@@ -8,7 +8,7 @@ import { WagmiProvider, createConfig, http } from 'wagmi';
 import { RainbowKitProvider, lightTheme, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { mainnet } from 'wagmi/chains';
-import { metaMaskWallet, coinbaseWallet, walletConnectWallet, phantomWallet } from '@rainbow-me/rainbowkit/wallets';
+import { metaMaskWallet, coinbaseWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,6 @@ const connectors = connectorsForWallets(
     {
       groupName: 'Popular',
       wallets: [
-        ({ chains }) => ({ ...phantomWallet({ chains }), hidden: () => false }), // Force Phantom visibility
         metaMaskWallet,
         coinbaseWallet,
         walletConnectWallet,

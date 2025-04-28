@@ -39,13 +39,10 @@ body {
   padding-top: 140px;
 }
 
-/* Minimal adjustment for RainbowKit modal to prevent overlapping titles */
+/* RainbowKit modal label size adjustment */
 [data-rk] [role="dialog"] button span {
-  font-size: 0.875rem; /* Slightly smaller font size to prevent overlap */
-}
-
-[data-rk] [role="dialog"] button {
-  margin-bottom: 0.5rem; /* Add spacing between wallet buttons */
+  font-size: 0.75rem !important; /* Smaller font to prevent overlap */
+  font-weight: 600 !important;
 }
 
 .container {
@@ -670,7 +667,7 @@ p {
     left: 0 !important;
     z-index: 500 !important;
     margin-bottom: 0 !important;
-    border-bottom: 1px solid #DAA520 !important; /* Reapply bottom border on mobile */
+    border-bottom: 1px solid #DAA520 !important;
   }
 
   .menu-toggle {
@@ -721,9 +718,8 @@ p {
     box-sizing: border-box !important;
   }
 
-  /* Increase top padding to move Home section content down */
   .hero-section {
-    padding: 2rem 0.5rem 2rem 0.5rem !important; /* Increased top padding from 1rem to 2rem */
+    padding: 2rem 0.5rem 2rem 0.5rem !important;
     width: 100% !important;
   }
 

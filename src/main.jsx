@@ -18,7 +18,7 @@ const connectors = connectorsForWallets(
     {
       groupName: 'Popular',
       wallets: [
-        phantomWallet,
+        ({ chains }) => ({ ...phantomWallet({ chains }), hidden: () => false }), // Force Phantom visibility
         metaMaskWallet,
         coinbaseWallet,
         walletConnectWallet,

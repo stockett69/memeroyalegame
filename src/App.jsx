@@ -52,7 +52,7 @@ function App() {
       <FAQ />
       <Whitepaper />
       <Contact />
-      <Lightning /> {/* Uncommented to reintroduce the Lightning component */}
+      <Lightning />
     </div>
   );
 }
